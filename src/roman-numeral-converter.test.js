@@ -1,4 +1,4 @@
-import { numberToNumeral } from "./roman-numeral-converter";
+import { numberToNumeral, numeralToNumber } from "./roman-numeral-converter";
 
 test("Number 1 converts to I", () => {
   expect(numberToNumeral(1)).toEqual("I");
@@ -24,9 +24,8 @@ test("8 returns VIII", () => {
   expect(numberToNumeral(8)).toEqual("VIII");
 });
 
-
 test("2000 return MM", () => {
-  expect(numberToNumeral(2000)).toEqual("MM");  
+  expect(numberToNumeral(2000)).toEqual("MM");
 });
 
 test("40 return XL", () => {
@@ -38,13 +37,30 @@ test("1999 return MCMXCIX", () => {
 });
 
 test("range error conditions", () => {
-  expect(() => numberToNumeral(3000)).toThrowError("Number out of range (must be between 1 and 3000)");
-  expect(() => numberToNumeral(-1)).toThrowError("Number out of range (must be between 1 and 3000)");
-  
+  expect(() => numberToNumeral(3000)).toThrowError(
+    "Number out of range (must be between 1 and 3000)"
+  );
+  expect(() => numberToNumeral(-1)).toThrowError(
+    "Number out of range (must be between 1 and 3000)"
+  );
 });
 
 test("Invalid argument type errors", () => {
-  expect(() => numberToNumeral("Gerbil")).toThrowError("Value passed in not a number");
-  expect(() => numberToNumeral(1.54)).toThrowError("Value passed in not a number");
-  expect(() => numberToNumeral([1, 2])).toThrowError("Value passed in not a number");
+  expect(() => numberToNumeral("Gerbil")).toThrowError(
+    "Value passed in not a number"
+  );
+  expect(() => numberToNumeral(1.54)).toThrowError(
+    "Value passed in not a number"
+  );
+  expect(() => numberToNumeral([1, 2])).toThrowError(
+    "Value passed in not a number"
+  );
+});
+
+test("I roman numeral returns 1", () => {
+  expect(numeralToNumber("I")).toBe(1);
+});
+
+test("II roman numeral returns 2", () => {
+  expect(numeralToNumber("II")).toBe(2);
 });

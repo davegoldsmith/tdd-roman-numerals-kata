@@ -42,3 +42,11 @@ export const numberToNumeral = (number) => {
   }
   return result;
 };
+
+/**
+ * Converts a roman numeral to a number
+ * @param {string} numeral roman numeral to convert
+ */
+export const numeralToNumber = ((numeral) => {
+  return 1;
+});
