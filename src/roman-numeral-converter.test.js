@@ -36,3 +36,15 @@ test("40 return XL", () => {
 test("1999 return MCMXCIX", () => {
   expect(numberToNumeral(1999)).toEqual("MCMXCIX");
 });
+
+test("range error conditions", () => {
+  expect(() => numberToNumeral(3000)).toThrowError("Number out of range (must be between 1 and 3000)");
+  expect(() => numberToNumeral(-1)).toThrowError("Number out of range (must be between 1 and 3000)");
+  
+});
+
+test("Invalid argument type errors", () => {
+  expect(() => numberToNumeral("Gerbil")).toThrowError("Value passed in not a number");
+  expect(() => numberToNumeral(1.54)).toThrowError("Value passed in not a number");
+  expect(() => numberToNumeral([1, 2])).toThrowError("Value passed in not a number");
+});
