@@ -88,3 +88,22 @@ test("MCMXCIX roman numeral returns 1999", () => {
 test("MM roman numeral returns 2000", () => {
   expect(numeralToNumber("MM")).toBe(2000);
 });
+
+test("Error: Numeral evaluated to more that 3000", () => {
+  expect(() => numeralToNumber("MMMM")).toThrowError(
+    "The roman numeral cannot be reliably converted"
+  );
+});
+
+test("Numeral argument errors", () => {
+  // expect(numeralToNumber("MUM")).toBe(undefined);
+  expect(() => numeralToNumber("MADEUP")).toThrowError(
+    "Numeral contains invalid roman numeral character"
+  );
+  expect(() => numeralToNumber(-1)).toThrowError(
+    "Numeral argument must be a valid numeral string"
+  );
+  expect(() => numeralToNumber(["MM"])).toThrowError(
+    "Numeral argument must be a valid numeral string"
+  );
+});

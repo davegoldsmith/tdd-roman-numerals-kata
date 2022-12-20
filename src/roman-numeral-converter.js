@@ -57,15 +57,24 @@ export const numberToNumeral = (number) => {
 };
 
 /**
- * Converts a roman numeral to a number
+ * Converts a roman numeral to a number (no greater than 3000)
  * @param {string} numeral roman numeral to convert
  */
 export const numeralToNumber = (numeral) => {
+  if (typeof numeral !== "string") {
+    // can only convert a string value
+    throw new Error("Numeral argument must be a valid numeral string");
+  }
   let result = 0;
+  // cycle through each character of the roman numeral string to determine the number value
   for (let i = 0; i < numeral.length; i++) {
     const numeralPairForCurrChar = numeralMap.find(
       (currNumeralPair) => currNumeralPair[0] === numeral[i]
     );
+    if (typeof numeralPairForCurrChar === "undefined") {
+      // we have found a character that is not a roman numeral
+      throw new Error("Numeral contains invalid roman numeral character");
+    }
     const currCharValue = Number(numeralPairForCurrChar[1]);
     const numeralPairForNextChar = numeralMap.find(
       (nextNumeralPair) => nextNumeralPair[0] === numeral[i + 1]
@@ -75,11 +84,20 @@ export const numeralToNumber = (numeral) => {
         ? Number(numeralPairForNextChar[1])
         : undefined;
     if (typeof nextCharValue !== undefined && currCharValue < nextCharValue) {
+      // if the next character is greater than the current one then
+      // we need to decrement the value by that amount e.g. IV = 5 - 1, XL = 50 - 10
       result += nextCharValue - currCharValue;
+      // more ahead a character as we have already dealt with that
       i++;
     } else {
+      // the next character value is equal or less than current character
+      // or this is the last character so add the current value
       result += currCharValue;
     }
+  }
+  if (result >= 3000) {
+    // for purposes of the kata, we are only evaluating to 3000
+    throw new Error("The roman numeral cannot be reliably converted");
   }
   return result;
 };
