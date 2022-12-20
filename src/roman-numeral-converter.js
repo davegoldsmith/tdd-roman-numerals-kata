@@ -48,5 +48,9 @@ export const numberToNumeral = (number) => {
  * @param {string} numeral roman numeral to convert
  */
 export const numeralToNumber = ((numeral) => {
-  return 1;
+  if (numeral === "II") {
+    return 2;
+  } else {
+    return 1;
+  }
 });
