@@ -18,6 +18,19 @@ const romanNumeralList = {
 };
 
 /**
+ * Map of possible numeral types
+ */
+const numeralMap = [
+  ["I", 1],
+  ["V", 5],
+  ["X", 10],
+  ["L", 50],
+  ["C", 100],
+  ["D", 500],
+  ["M", 1000],
+];
+
+/**
  * Converts a number between 1 and 3000 into a roman numeral
  * @param {number} number number to convert
  * @returns roman numeral equivalent
@@ -47,12 +60,26 @@ export const numberToNumeral = (number) => {
  * Converts a roman numeral to a number
  * @param {string} numeral roman numeral to convert
  */
-export const numeralToNumber = ((numeral) => {
+export const numeralToNumber = (numeral) => {
   let result = 0;
   for (let i = 0; i < numeral.length; i++) {
-    if (numeral.charAt(i) === "I") {
-      result++;
+    const numeralPairForCurrChar = numeralMap.find(
+      (currNumeralPair) => currNumeralPair[0] === numeral[i]
+    );
+    const currCharValue = Number(numeralPairForCurrChar[1]);
+    const numeralPairForNextChar = numeralMap.find(
+      (nextNumeralPair) => nextNumeralPair[0] === numeral[i + 1]
+    );
+    const nextCharValue =
+      typeof numeralPairForNextChar !== "undefined"
+        ? Number(numeralPairForNextChar[1])
+        : undefined;
+    if (typeof nextCharValue !== undefined && currCharValue < nextCharValue) {
+      result += nextCharValue - currCharValue;
+      i++;
+    } else {
+      result += currCharValue;
     }
   }
   return result;
-});
+};

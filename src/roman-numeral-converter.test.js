@@ -68,3 +68,15 @@ test("II roman numeral returns 2", () => {
 test("III roman numeral returns 3", () => {
   expect(numeralToNumber("III")).toBe(3);
 });
+
+test("IV roman numeral returns 4", () => {
+  expect(numeralToNumber("IV")).toBe(4);
+});
+
+test("V roman numeral returns 5", () => {
+  expect(numeralToNumber("IV")).toBe(4);
+});
+
+test("VIII roman numeral returns 8", () => {
+  expect(numeralToNumber("VIII")).toBe(8);
+});
