@@ -48,9 +48,11 @@ export const numberToNumeral = (number) => {
  * @param {string} numeral roman numeral to convert
  */
 export const numeralToNumber = ((numeral) => {
-  if (numeral === "II") {
-    return 2;
-  } else {
-    return 1;
+  let result = 0;
+  for (let i = 0; i < numeral.length; i++) {
+    if (numeral.charAt(i) === "I") {
+      result++;
+    }
   }
+  return result;
 });

@@ -64,3 +64,7 @@ test("I roman numeral returns 1", () => {
 test("II roman numeral returns 2", () => {
   expect(numeralToNumber("II")).toBe(2);
 });
+
+test("III roman numeral returns 3", () => {
+  expect(numeralToNumber("III")).toBe(3);
+});
