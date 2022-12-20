@@ -19,3 +19,20 @@ test("Number 4 converts to IV", () => {
 test("Number 5 converts to V", () => {
   expect(numberToNumeral(5)).toEqual("V");
 });
+
+test("8 returns VIII", () => {
+  expect(numberToNumeral(8)).toEqual("VIII");
+});
+
+
+test("2000 return MM", () => {
+  expect(numberToNumeral(2000)).toEqual("MM");  
+});
+
+test("40 return XL", () => {
+  expect(numberToNumeral(40)).toEqual("XL");
+});
+
+test("1999 return MCMXCIX", () => {
+  expect(numberToNumeral(1999)).toEqual("MCMXCIX");
+});
