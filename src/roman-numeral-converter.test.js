@@ -11,3 +11,11 @@ test("Number 2 converts to II", () => {
 test("Number 3 converts to III", () => {
   expect(numberToNumeral(3)).toEqual("III");
 });
+
+test("Number 4 converts to IV", () => {
+  expect(numberToNumeral(4)).toEqual("IV");
+});
+
+test("Number 5 converts to V", () => {
+  expect(numberToNumeral(5)).toEqual("V");
+});
