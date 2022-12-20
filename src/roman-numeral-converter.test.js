@@ -80,3 +80,11 @@ test("V roman numeral returns 5", () => {
 test("VIII roman numeral returns 8", () => {
   expect(numeralToNumber("VIII")).toBe(8);
 });
+
+test("MCMXCIX roman numeral returns 1999", () => {
+  expect(numeralToNumber("MCMXCIX")).toBe(1999);
+});
+
+test("MM roman numeral returns 2000", () => {
+  expect(numeralToNumber("MM")).toBe(2000);
+});
